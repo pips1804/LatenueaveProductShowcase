@@ -45,7 +45,7 @@
         <!-- Close Button -->
         <button
           @click="$emit('close')"
-          class="bg-brown-800 dark:bg-brown-700 text-white px-4 py-2 rounded-md hover:bg-brown-700 dark:hover:bg-brown-600 transition"
+          class="bg-brown-800 dark:bg-brown-700 text-white px-4 py-2 rounded-full hover:bg-brown-700 dark:hover:bg-brown-600 transition"
         >
           Close
         </button>
