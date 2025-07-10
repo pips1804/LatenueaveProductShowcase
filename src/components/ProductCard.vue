@@ -1,52 +1,45 @@
 <template>
   <div
-    class="bg-white dark:bg-brown-900 rounded-lg shadow-sm overflow-hidden transition-all duration-300 group hover:shadow-lg hover:-translate-y-1"
+    class="bg-white dark:bg-brown-900 rounded-2xl border border-brown-200 dark:border-brown-800 shadow-md overflow-hidden transition-all duration-300 group hover:shadow-lg hover:-translate-y-1"
   >
-    <div
-      class="aspect-square bg-brown-100 dark:bg-brown-800 relative overflow-hidden rounded-t-lg"
-    >
+    <div class="relative aspect-square overflow-hidden">
       <img
         :src="product.image"
         :alt="product.name"
-        class="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-300"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
-      <div class="absolute top-4 right-4">
-        <!-- <button
-          class="bg-white/80 dark:bg-brown-900/80 backdrop-blur-sm p-2 rounded-full hover:scale-110 transition-transform"
-        >
-          <svg
-            class="h-5 w-5 text-brown-600 dark:text-brown-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-            />
-          </svg>
-        </button> -->
+
+      <!-- Gradient overlay on hover -->
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      ></div>
+
+      <!-- Floating button -->
+      <button
+        @click="$emit('view-product', product)"
+        class="absolute bottom-3 right-3 bg-white dark:bg-brown-700 text-sm px-3 py-1.5 rounded-full font-medium shadow hover:scale-105 transition-transform"
+      >
+        View
+      </button>
+
+      <!-- Optional badge -->
+      <div
+        v-if="product.isNew"
+        class="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full shadow"
+      >
+        NEW
       </div>
     </div>
-    <div class="p-4">
-      <h4 class="font-semibold text-brown-900 dark:text-brown-100 mb-1">
+
+    <div class="p-4 space-y-1">
+      <h4
+        class="text-brown-900 dark:text-brown-100 font-semibold text-lg truncate"
+      >
         {{ product.name }}
       </h4>
-      <p class="text-brown-600 dark:text-brown-400 text-sm mb-4 line-clamp-2">
-        {{ product.description }}
+      <p class="text-brown-600 dark:text-brown-300 text-sm truncate">
+        {{ product.category }}
       </p>
-
-      <!-- Button aligned right -->
-      <div class="flex justify-end">
-        <button
-          @click="$emit('view-product', product)"
-          class="bg-brown-800 dark:bg-brown-200 text-brown-100 dark:text-brown-900 px-4 py-2 rounded-full text-sm hover:bg-brown-700 dark:hover:bg-brown-300 transition-colors"
-        >
-          View Product
-        </button>
-      </div>
     </div>
   </div>
 </template>
